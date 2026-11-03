@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>诗词夜游 · 承天寺夜游</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌕</text></svg>">
+</head>
+<body>
+
+<!-- ============ 场景背景层 ============ -->
+<div class="scene" id="scene">
+  <div class="sky-grain"></div>
+  <div class="stars" id="stars"></div>
+  <div class="moon" id="moon">
+    <div class="moon-crater c1"></div>
+    <div class="moon-crater c2"></div>
+    <div class="moon-crater c3"></div>
+    <div class="moon-crater c4"></div>
+    <div class="moon-crater c5"></div>
+    <div class="moon-halo"></div>
+  </div>
+  <div class="branch branch-left"></div>
+  <div class="branch branch-right"></div>
+
+  <!-- 竹林 -->
+  <div class="bamboo-grove" id="bambooGrove">
+    <div class="bamboo b1"></div>
+    <div class="bamboo b2"></div>
+    <div class="bamboo b3"></div>
+    <div class="bamboo b4"></div>
+    <div class="bamboo b5"></div>
+  </div>
+
+  <!-- 石径 -->
+  <div class="stone-path" id="stonePath"></div>
+
+  <!-- 寺门 -->
+  <div class="temple-gate" id="templeGate">
+    <div class="gate-roof"></div>
+    <div class="gate-body">
+      <div class="gate-door"></div>
+      <div class="gate-lantern left"></div>
+      <div class="gate-lantern right"></div>
+    </div>
+  </div>
+
+  <div class="tower" id="tower">
+    <div class="tower-body">
+      <div class="tower-window w1"></div>
+      <div class="tower-window w2"></div>
+      <div class="tower-window w3"></div>
+    </div>
+    <div class="tower-spire s1"></div>
+    <div class="tower-spire s2"></div>
+  </div>
+
+  <!-- 石亭 -->
+  <div class="stone-pavilion" id="stonePavilion">
+    <div class="pavilion-roof"></div>
+    <div class="pavilion-pillar left"></div>
+    <div class="pavilion-pillar right"></div>
+    <div class="pavilion-base"></div>
+  </div>
+
+  <!-- 野望场景：落日 -->
+  <div class="sunset" id="sunset"></div>
+
+  <!-- 野望场景：秋树 -->
+  <div class="autumn-trees" id="autumnTrees">
+    <div class="autumn-tree t1"></div>
+    <div class="autumn-tree t2"></div>
+    <div class="autumn-tree t3"></div>
+    <div class="autumn-tree t4"></div>
+    <div class="autumn-tree t5"></div>
+  </div>
+
+  <!-- 野望场景：远山 -->
+  <div class="distant-hills" id="distantHills">
+    <div class="hill h1"></div>
+    <div class="hill h2"></div>
+    <div class="hill h3"></div>
+  </div>
+
+  <!-- 野望场景：村路 -->
+  <div class="village-path" id="villagePath"></div>
+
+  <!-- 野望场景：牛犊 -->
+  <div class="calf" id="calf">
+    <div class="calf-body"></div>
+    <div class="calf-head"></div>
+    <div class="calf-leg fl"></div>
+    <div class="calf-leg fr"></div>
+    <div class="calf-leg bl"></div>
+    <div class="calf-leg br"></div>
+  </div>
+
+  <!-- 野望场景：猎马 -->
+  <div class="hunt-horse" id="huntHorse">
+    <div class="horse-body"></div>
+    <div class="horse-head"></div>
+    <div class="horse-leg fl"></div>
+    <div class="horse-leg fr"></div>
+    <div class="horse-leg bl"></div>
+    <div class="horse-leg br"></div>
+    <div class="horse-prey"></div>
+  </div>
+
+  <!-- 野望场景：村灯 -->
+  <div class="village-lights" id="villageLights">
+    <div class="village-light l1"></div>
+    <div class="village-light l2"></div>
+    <div class="village-light l3"></div>
+    <div class="village-light l4"></div>
+  </div>
+
+  <div class="fog fog-1"></div>
+  <div class="fog fog-2"></div>
+</div>
+
+<!-- ============ 主界面 ============ -->
+<main class="stage" id="stage">
+
+  <header class="topbar">
+    <div class="topbar-left">
+      <span class="poem-title" id="poemTitle">承天寺夜游</span>
+      <span class="poem-sub" id="poemSub">宋 · 苏轼</span>
+    </div>
+    <div class="topbar-right">
+      <button class="icon-btn" id="btnMenu" title="菜单" aria-label="菜单">☰</button>
+    </div>
+  </header>
+
+  <div class="poet" id="poet">
+    <div class="mood-bubble" id="moodBubble" hidden></div>
+    <div class="poet-hat"></div>
+    <div class="poet-head">
+      <span class="poet-eye e-left"></span>
+      <span class="poet-eye e-right"></span>
+      <span class="poet-beard"></span>
+    </div>
+    <div class="poet-body">
+      <span class="robe-collar"></span>
+    </div>
+    <div class="poet-arm" id="poetArm">
+      <div class="poet-hand"></div>
+    </div>
+  </div>
+
+  <button class="play-btn" id="playBtn" aria-label="播放">
+    <svg viewBox="0 0 100 100" width="86" height="86" aria-hidden="true">
+      <defs>
+        <pattern id="dot" width="8" height="8" patternUnits="userSpaceOnUse">
+          <circle cx="4" cy="4" r="3.1" fill="currentColor"/>
+        </pattern>
+      </defs>
+      <path d="M22 12 L78 50 L22 88 Z" fill="url(#dot)"/>
+    </svg>
+  </button>
+
+  <div class="nameplate" id="nameplate" hidden>
+    <span class="nameplate-text" id="nameplateText">苏 轼</span>
+  </div>
+
+  <div class="dialogue" id="dialogue">
+    <div class="dialogue-text" id="dialogueText"></div>
+    <button class="dialogue-more" id="dialogueMore" title="更多">⋯</button>
+  </div>
+
+  <button class="continue-btn" id="continueBtn" hidden>继续 ▸</button>
+
+  <nav class="navbar">
+    <button class="nav-item" data-panel="read"><span>读诗</span></button>
+    <span class="nav-sep">|</span>
+    <button class="nav-item" data-panel="poems"><span>诗选</span></button>
+    <span class="nav-sep">|</span>
+    <button class="nav-item" data-panel="archive"><span>存档</span></button>
+    <span class="nav-sep">|</span>
+    <button class="nav-item" data-panel="settings"><span>设置</span></button>
+    <span class="nav-sep">|</span>
+    <button class="nav-item" data-panel="affection"><span>好感</span></button>
+    <div class="navbar-right">
+      <button class="skip-btn" id="skipBtn"><span>跳过朗诵</span></button>
+      <button class="fast-btn" id="fastBtn"><span>快进</span><span class="tri"></span></button>
+    </div>
+  </nav>
+</main>
+
+<!-- ============ 面板层 ============ -->
+<div class="panel-layer" id="panelLayer" hidden>
+  <div class="panel-scrim" id="panelScrim"></div>
+  <section class="panel" id="panel">
+    <header class="panel-head">
+      <h2 id="panelTitle">读诗</h2>
+      <button class="panel-close" id="panelClose" aria-label="关闭">✕</button>
+    </header>
+    <div class="panel-body" id="panelBody"></div>
+  </section>
+</div>
+
+<!-- ============ 彩蛋/提示层 ============ -->
+<div class="toast" id="toast" hidden></div>
+
+<!-- ============ 小测验弹窗 ============ -->
+<div class="quiz-layer" id="quizLayer" hidden>
+  <div class="quiz-card">
+    <button class="quiz-close" id="quizClose" aria-label="关闭">✕</button>
+    <h3 id="quizTitle">小试身手</h3>
+    <p class="quiz-q" id="quizQ"></p>
+    <div class="quiz-options" id="quizOptions"></div>
+    <div class="quiz-tip" id="quizTip" hidden></div>
+    <button class="quiz-next" id="quizNext" hidden>继续 →</button>
+  </div>
+</div>
+
+<!-- ============ 小游戏层 ============ -->
+<div class="minigame-layer" id="minigameLayer" hidden>
+  <div class="minigame-card">
+    <div class="minigame-head">
+      <h3 id="mgTitle"></h3>
+      <div class="minigame-stats">
+        <span id="mgScore"></span>
+        <span id="mgTimer"></span>
+      </div>
+    </div>
+    <p class="minigame-desc" id="mgDesc"></p>
+    <div class="minigame-play" id="mgPlay"></div>
+    <button class="minigame-done" id="mgDone" hidden>继续 ▸</button>
+  </div>
+</div>
+
+<script src="js/storage.js"></script>
+<script src="js/scene.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/poem.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/walk.js"></script>
+<script src="js/panels.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

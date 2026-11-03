@@ -1,0 +1,10 @@
+{
+  "id": "index",
+  "title": "诗词夜游",
+  "subtitle": "一场与古人的月下同行",
+  "poems": [
+    { "id": "chengtiansi", "file": "poems/chengtiansi.json" },
+    { "id": "shuidiao", "file": "poems/shuidiao.json" },
+    { "id": "yewang", "file": "poems/yewang.json" }
+  ]
+}
